@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Store Name</h2>
+  <p>{{ stores.name }}</p>
+  <h2>Store Location</h2>
+  <p>{{ stores.store_location }}</p>
+  <h2>Email id</h2>
+  <p>{{ stores.email_id }}</p>
+  <h2>Tub Flavors</h2>
+  {% if stores.tubs.all %}
+    <ul>
+    {% for tub in stores.tubs.all %}
+      <li>{{ tub.flavor }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No tub flavors found for this store.</p>
+  {% endif %}
+  <form>
+    <input type="button" value="Go back!" onclick="history.back()">  <!--Back button added from html documentation-->
+   </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Tubs</h2>
+
+  <table class="table table-bordered">   <!-- table from bootstrap. Used bootstrap documentation -->
+    <thead>
+      <tr>
+        <th>Flavor</th>
+        <th>Size in litres</th>
+        <th>Vegan (Yes/No)</th>
+        <th>Gluten Free (Yes/No)</th>
+        <th>Allocated Store</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tub in tubs %}
+        <tr>
+          <td>{{ tub.flavor }}</td>
+          <td>{{ tub.size }}</td>
+          <td>{% if tub.is_vegan %}Yes{% else %}No{% endif %}</td>
+          <td>{% if tub.is_gluten_free %}Yes{% else %}No{% endif %}</td>
+          <td>{{ tub.store.name }} - {{ tub.store.store_location }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form>
+    <input type="button" value="Go back!" onclick="history.back()">  <!--Back button added from html documentation-->
+   </form>
+{% endblock %}
